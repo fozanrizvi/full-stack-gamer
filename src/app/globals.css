@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  /* The brand palette is the whole palette: drop Tailwind's default colours. */
+  --color-*: initial;
+  --color-navy: #0a1f5c;
+  --color-navy-deep: #06143d;
+  --color-ink: #0b0f1a;
+  --color-mint: #12c48e;
+  --color-grey: #aeb4bf;
+  --color-grey-shade: #8a919d;
+  --color-white: #f5f7fa;
+  --color-body-on-navy: #d5dae3;
+
+  /* Hard offset shadows, no blur. */
+  --shadow-*: initial;
+  --shadow-hard: 6px 6px 0 #0b0f1a;
+  --shadow-card: 8px 8px 0 #0b0f1a;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: var(--font-press-start), ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-navy);
+    color: var(--color-body-on-navy);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-pixel);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-mint);
+    outline-offset: 2px;
+  }
+
+  /* A mint ring disappears on the mint band, so it turns ink there. */
+  .focus-ink :focus-visible {
+    outline-color: var(--color-ink);
+  }
+}
+
+@utility scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(11, 15, 26, 0.18) 0 2px,
+    transparent 2px 8px
+  );
+}

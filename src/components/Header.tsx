@@ -5,7 +5,7 @@ import { container } from "./Section";
 
 export function Header() {
   return (
-    <header className="border-b-4 border-ink bg-navy-deep">
+    <header className="neon-rule-b relative z-10 border-b-4 border-ink bg-navy-deep">
       <div
         className={`${container} flex flex-wrap items-center justify-between gap-x-8 gap-y-4 py-4`}
       >
@@ -15,11 +15,15 @@ export function Header() {
             alt=""
             width={40}
             height={46}
-            className="h-auto w-10"
+            className="h-auto w-10 drop-shadow-[0_0_8px_rgb(18_196_142/0.45)]"
           />
           <span className="font-pixel text-sm leading-normal text-white">
             FULL STACK GAMER
           </span>
+          <span
+            aria-hidden="true"
+            className="size-2 bg-mint shadow-[0_0_8px_#12c48e] motion-safe:animate-pip"
+          />
         </a>
         <nav aria-label="Main">
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -27,8 +31,11 @@ export function Header() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="inline-block py-2 font-medium text-white underline-offset-4 hover:text-mint hover:underline"
+                  className="font-hud inline-block py-2 text-base tracking-[0.12em] text-white uppercase underline-offset-4 hover:text-mint hover:underline hover:glow-mint"
                 >
+                  <span aria-hidden="true" className="mr-1 text-neon">
+                    {"//"}
+                  </span>
                   {item.label}
                 </a>
               </li>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Press_Start_2P } from "next/font/google";
+import { Inter, Press_Start_2P, Share_Tech_Mono } from "next/font/google";
 import type { ReactNode } from "react";
 import { site } from "@/content/site";
 import { getSiteUrl } from "@/lib/site-url";
@@ -14,6 +14,13 @@ const inter = Inter({
 
 const pressStart = Press_Start_2P({
   variable: "--font-press-start",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const shareTech = Share_Tech_Mono({
+  variable: "--font-share-tech",
   subsets: ["latin"],
   weight: "400",
   display: "swap",
@@ -63,9 +70,13 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${pressStart.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${pressStart.variable} ${shareTech.variable}`}
+    >
       <body className="antialiased">
         {children}
+        <div aria-hidden="true" className="crt-overlay" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

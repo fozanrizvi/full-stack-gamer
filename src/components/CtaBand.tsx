@@ -8,10 +8,14 @@ export function CtaBand() {
   return (
     <section
       aria-labelledby="cta-heading"
-      className="focus-ink border-t-4 border-ink bg-mint py-16 text-ink"
+      className="focus-ink border-t-4 border-ink bg-mint pb-16 text-ink"
     >
       <div
-        className={`${container} flex flex-wrap items-center justify-between gap-8`}
+        aria-hidden="true"
+        className="hazard h-3 border-b-[3px] border-ink"
+      />
+      <div
+        className={`${container} mt-16 flex flex-wrap items-center justify-between gap-8`}
       >
         <h2 id="cta-heading" className="text-[clamp(1.125rem,4.6vw,1.5rem)]">
           {cta.heading}

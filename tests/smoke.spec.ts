@@ -81,3 +81,24 @@ test("page does not scroll sideways", async ({ page }) => {
   );
   expect(overflow).toBe(0);
 });
+
+test("decorative motion stops when the visitor prefers reduced motion", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+
+  for (const testId of ["hero-grid", "hero-cursor"]) {
+    await expect(page.getByTestId(testId)).toHaveCSS("animation-name", "none");
+  }
+});
+
+test("decorative motion runs when motion is allowed", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+
+  await expect(page.getByTestId("hero-cursor")).not.toHaveCSS(
+    "animation-name",
+    "none",
+  );
+});
